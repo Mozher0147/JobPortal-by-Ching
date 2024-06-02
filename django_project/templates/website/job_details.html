@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+
+{% block content %}
+
+<section>
+    <div class="p-5 mb-4 bg-light rounded-3 text-center">
+        <div class="container-fluid py-5">
+            <div class="card h-100">
+                <div class="card-body ">
+                    <img src="{% static 'images/mindanao1.png' %}" class="img-fluid" alt="Mindanao Image" width="500">
+                </div>
+            </div>
+            <h2 class="display-5 fw-bold container-fluid py-5">{{job.title}}</h2>
+            <p class="col-md-8 fs-5 mt-3 mx-auto">
+                {{job.state}} | {{job.job_type}} | ₱ {{job.salary|intcomma}}
+            </p>
+            {% if has_applied == False %}
+            <a href= "{% url 'apply-to-job' job.pk %}" class="btn btn-primary btn-lg">Apply Now</a>
+            {% else %}
+            <p><span class="text-danger">You have already applied for this job</span></p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<div class="container mt-5">
+    <section>
+        <div class="card border-black shadow-sm">
+            <div class="card-header text-primary" style="background-color: #F5F5F5;">
+                <h5 class="card-title mb-0" style="color: black;">Job Description:</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{job.job_description}}
+                </p>
+            </div>
+        </div>
+    </section>
+</div> <br>
+
+<div class="container mt-5">
+    <section>
+        <div class="card border-black shadow-sm">
+            <div class="card-header text-primary" style="background-color: #F5F5F5;">
+                <h5 class="card-title mb-0" style="color: black;">Objectives of this Role:</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{job.job_objectives}}
+                </p>
+            </div>
+        </div>
+    </section>
+</div> <br>
+
+<div class="container mt-5">
+    <section>
+        <div class="card border-black shadow-sm">
+            <div class="card-header text-primary" style="background-color: #F5F5F5;">
+                <h5 class="card-title mb-0" style="color: black;">Job Required Skills and Qualifications:</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{job.requirements}}
+                </p>
+            </div>
+        </div>
+    </section>
+</div> <br>
+
+<div class="container mt-5">
+    <section>
+        <div class="card border-black shadow-sm">
+            <div class="card-header text-primary" style="background-color: #F5F5F5;">
+                <h5 class="card-title mb-0" style="color: black;">Job Preferred Skills and Qualifications:</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{job.job_skills}}
+                </p>
+            </div>
+        </div>
+    </section>
+</div> <br>
+
+<div class="container mt-5">
+    <section>
+        <div class="card border-black shadow-sm">
+            <div class="card-header text-primary" style="background-color: #F5F5F5;">
+                <h5 class="card-title mb-0" style="color: black;">Ideal Candidate:</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{job.ideal_candidate}}
+                </p>
+            </div>
+        </div>
+    </section>
+</div> <br> 
+
+<br>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 d-flex align-items-center justify-content-center">
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">About Company</h5>
+                <p class="card-text">Company Name: {{job.company.name}}</p>
+                <p class="card-text">Comapany Location: {{job.company.city}}, {{job.company.state}}</p>
+                <p class="card-text">Company Established: {{job.company.est_date}}</p>
+                <p class="card-text">Company Contact Number: {{job.contact_number}}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{job.timestamp|naturaltime}}</small>
+            </div>
+        </div>
+    </div>   
+</div> <br>
+
+{% endblock content %}

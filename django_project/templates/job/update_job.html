@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mx-auto" style="width: 40rem;">
+            <!-- <img src="..." class="card-img-top" alt"..."> -->
+            <div class="card-body">
+                <h5 class="card-title mb-3">Update Job</h5>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Job Title</label>
+                        {% render_field form.title class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Salary</label>
+                        {% render_field form.salary class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">City</label>
+                        {% render_field form.city class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Region</label>
+                        {% render_field form.region class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">State</label>
+                        {% render_field form.state class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Industry</label>
+                        {% render_field form.industry class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Contact Number</label>
+                        {% render_field form.contact_number class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Job Objectives</label>
+                        {% render_field form.job_objectives|attr:"rows:2" class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Job Preferred Requirements</label>
+                        {% render_field form.job_skills|attr:"rows:2" class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Job Type</label>
+                        {% render_field form.job_type class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Job Description</label>
+                        {% render_field form.job_description|attr:"rows:2" class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Job Requirements</label>
+                        {% render_field form.requirements|attr:"rows:2" class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Ideal Candidate</label>
+                        {% render_field form.ideal_candidate|attr:"rows:2" class="form-control" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="from-label">Is this Job Available</label>
+                        {% render_field form.is_available class="form-check-input" %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
